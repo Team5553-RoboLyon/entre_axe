@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'front/Home.dart';
+// import 'front/Calculated.dart';
 
 void main() => runApp(MyApp());
 
@@ -10,6 +11,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Home(),
+      // home: Calculated(),
     );
   }
 }

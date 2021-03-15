@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'Calculated.dart';
+
 class Home extends StatelessWidget {
   @override
   var nbrDentPignon1 = "0";
@@ -27,19 +29,23 @@ class Home extends StatelessWidget {
                   child: Column(
                     children: [
                       TextFormField(
-                        decoration: InputDecoration(hintText: "nbrDentPignon1"),
+                        decoration: InputDecoration(
+                            hintText:
+                                "nombre de dent de l'engrenage entrainant"),
                         onSaved: (value) {
                           nbrDentPignon1 = value;
                         },
                       ),
                       TextFormField(
-                        decoration: InputDecoration(hintText: "nbrDentPignon2"),
+                        decoration: InputDecoration(
+                            hintText: "nombre de dent de l'engrenage entrainé"),
                         onSaved: (value) {
                           nbrDentPignon2 = value;
                         },
                       ),
                       TextFormField(
-                        decoration: InputDecoration(hintText: "nbrDentCouroi"),
+                        decoration: InputDecoration(
+                            hintText: "nombre de dent de la courroie"),
                         onSaved: (value) {
                           nbrDentCouroi = value;
                         },
@@ -50,6 +56,14 @@ class Home extends StatelessWidget {
                           print("nbrDentPignon1 : " + nbrDentPignon1);
                           print("nbrDentPignon2 : " + nbrDentPignon2);
                           print("nbrDentCouroi : " + nbrDentCouroi);
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => Calculated(
+                                        nbrDentCouroi: nbrDentCouroi,
+                                        nbrDentPignon1: nbrDentPignon1,
+                                        nbrDentPignon2: nbrDentPignon2,
+                                      )));
                         },
                         child: Text("calculate"),
                       )
