@@ -1,32 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-import '../back/calculator.dart';
+import '../back/entreAxecalcul.dart';
 
 class Calculated extends StatelessWidget {
-  @override
-
-  var nbrDentPignon1 = "0";
-  var nbrDentPignon2 = "0";
-  var nbrDentCouroi = "0";
+  var nbrDentPignon1;
+  var nbrDentPignon2;
+  var nbrDentCouroi;
 
   Calculated({this.nbrDentCouroi, this.nbrDentPignon1, this.nbrDentPignon2});
 
+  @override
   Widget build(BuildContext context) {
-    var entreAxeIn = distIn(
-        int.parse(nbrDentCouroi),
-        int.parse(nbrDentPignon1),
-        int.parse(nbrDentPignon2));
-    var entreAxeMm = distMm(entreAxeIn);
-    var reductionVar = reduction(
-        int.parse(nbrDentPignon1),
-        int.parse(nbrDentPignon2));
-    var diametrePrimitif1 = diametrePrimitf(
-        int.parse(nbrDentCouroi),
-        int.parse(nbrDentPignon1));
-    var diametrePrimitif2 = diametrePrimitf(
-        int.parse(nbrDentCouroi),
-        int.parse(nbrDentPignon2));
+    var entreAxe = EntreAxeCalcul(
+        nbrDentCourroie: nbrDentCouroi,
+        engrenage1: nbrDentPignon1,
+        engrenage2: nbrDentPignon2);
     var height = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: AppBar(
@@ -45,7 +34,7 @@ class Calculated extends StatelessWidget {
                   children: [
                     FaIcon(FontAwesomeIcons.rulerHorizontal),
                     Text("entre axe en In : "),
-                    Text(entreAxeIn.toString())
+                    Text(entreAxe.distIn().toString())
                   ],
                 ),
                 SizedBox(
@@ -55,7 +44,7 @@ class Calculated extends StatelessWidget {
                   children: [
                     FaIcon(FontAwesomeIcons.rulerHorizontal),
                     Text("entre axe en mm : "),
-                    Text(entreAxeMm.toString())
+                    Text(entreAxe.distMm().toString())
                   ],
                 ),
                 SizedBox(
@@ -65,7 +54,7 @@ class Calculated extends StatelessWidget {
                   children: [
                     FaIcon(FontAwesomeIcons.cog),
                     Text("diametre primitif en in du pignon entrainant : "),
-                    Text(diametrePrimitif1.toString())
+                    Text(entreAxe.diametrePrimitf1().toString())
                   ],
                 ),
                 SizedBox(
@@ -75,7 +64,7 @@ class Calculated extends StatelessWidget {
                   children: [
                     FaIcon(FontAwesomeIcons.cog),
                     Text("diametre primitif en in du pignon entrainé : "),
-                    Text(diametrePrimitif2.toString())
+                    Text(entreAxe.diametrePrimitf2().toString())
                   ],
                 ),
                 SizedBox(
@@ -85,7 +74,7 @@ class Calculated extends StatelessWidget {
                   children: [
                     FaIcon(FontAwesomeIcons.cogs),
                     Text("réduction : "),
-                    Text(reductionVar.toString())
+                    Text(entreAxe.reduction().toString())
                   ],
                 ),
               ],

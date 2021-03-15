@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import 'front/Home.dart';
-// import 'front/Calculated.dart';
 
 void main() => runApp(MyApp());
 

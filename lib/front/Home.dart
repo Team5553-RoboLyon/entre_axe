@@ -59,11 +59,7 @@ class Home extends StatelessWidget {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => Calculated(
-                                        nbrDentCouroi: nbrDentCouroi,
-                                        nbrDentPignon1: nbrDentPignon1,
-                                        nbrDentPignon2: nbrDentPignon2,
-                                      )));
+                                  builder: (context) => Calculated(nbrDentCouroi: int.parse(nbrDentCouroi), nbrDentPignon1: int.parse(nbrDentPignon1), nbrDentPignon2: int.parse(nbrDentPignon2))));
                         },
                         child: Text("calculate"),
                       )
